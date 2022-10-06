@@ -30,17 +30,14 @@
                                                 Me</label>
                                         </div>
                                     </div>
-                                    <a href="index.html" class="btn btn-primary btn-user btn-block">
+                                    <a href="<?= base_url('/user'); ?>" class="btn btn-primary btn-user btn-block">
                                         Login
                                     </a>
 
                                 </form>
                                 <hr>
                                 <div class="text-center">
-                                    <a class="small" href="forgot-password.html">Forgot Password?</a>
-                                </div>
-                                <div class="text-center">
-                                    <a class="small" href="register.html">Create an Account!</a>
+                                    <a class="small" href="<?= base_url('/register'); ?>">Create an Account!</a>
                                 </div>
                             </div>
                         </div>
