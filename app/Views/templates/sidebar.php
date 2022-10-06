@@ -5,7 +5,7 @@
         <div class="sidebar-brand-icon">
             <i class="fas fa-code"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">WPU RIZAL</div>
+        <div class="sidebar-brand-text mx-3">MYTHAUTH</div>
     </a>
 
     <!-- Divider -->
@@ -35,7 +35,7 @@
 
     <!-- Nav Item - Logout -->
     <li class="nav-item">
-        <a class="nav-link" href="tables.html">
+        <a class="nav-link" href="<?= base_url('logout'); ?>">
             <i class="fas fa-sign-out-alt"></i>
             <span>Logout</span></a>
     </li>
