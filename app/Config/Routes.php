@@ -44,6 +44,8 @@ $routes->get('/admin/(:num)', 'Admin::detail/$1', ['filter' => 'role:admin']);
 $routes->get('/register', 'Home::register');
 $routes->get('/user', 'Home::user');
 $routes->get('/kategori', 'Kategori::index');
+$routes->get('/kategori/detail/(:any)', 'Kategori::detail/$1');
+// $routes->get('/kategori/wisata', 'Kategori::wisata');
 
 /*
  * --------------------------------------------------------------------

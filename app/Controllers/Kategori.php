@@ -2,13 +2,17 @@
 
 namespace App\Controllers;
 
+use App\Models\KategoriModel;
+use App\Models\MenuModel;
+
 class Kategori extends BaseController
 {
-    protected $db, $builder;
+    protected $db, $builder, $model;
     public function __construct()
     {
         $this->db      = \Config\Database::connect();
         $this->builder = $this->db->table('menu');
+        $this->model = new MenuModel();
     }
     public function index()
     {
@@ -17,31 +21,23 @@ class Kategori extends BaseController
         // $users = new UserModel();
         // $data['users'] = $users->findAll();
 
-        $this->builder->select('menu.id as menuid, nama, deskripsi, foto,kategori.kategori_nama as kategori');
+        $this->builder->select('menu.id as menuid, slug, nama, deskripsi, foto, kategori.kategori_nama as kategori');
         $this->builder->join('kategori', 'kategori.kategori_id = menu.id');
         $query = $this->builder->get();
 
         // result object
-        $data['menu'] = $query->getResult();
+        $data['menu'] = $query->getResultArray();
         return view('/kategori/index', $data);
     }
-    public function detail($id = 0)
+
+
+    public function detail($slug)
     {
-        $data['title'] = 'User details';
+        $data = [
+            'title' => 'Detail ',
+            'menu' => $this->model->getBySlug($slug)
+        ];
 
-        $this->builder->select('users.id as userid, username, email, name, fullname, user_image');
-        $this->builder->join('auth_groups_users', 'auth_groups_users.user_id = users.id');
-        $this->builder->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id');
-        $this->builder->where('users.id', $id);
-        $query = $this->builder->get();
-
-        // result object satu ssaj pake getRow
-        $data['user'] = $query->getRow();
-
-        if (empty($data['user'])) {
-            return redirect()->to('/admin');
-        }
-
-        return view('admin/detail', $data);
+        return view('/kategori/detail', $data);
     }
 }
