@@ -16,4 +16,8 @@ class Home extends BaseController
     {
         return view('user/index');
     }
+    public function kategori()
+    {
+        return view('kategori/index');
+    }
 }
